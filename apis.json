@@ -1,0 +1,46 @@
+{
+  "_说明": "修改下面的 url 即可更换 API 地址。enabled=true 启用，false 停用。至少保留4个。",
+  "_检测方式": "GET 请求该地址，HTTP 200 且响应体非空即为连通；expect_keyword 可选，填了则响应必须包含该字符串才算成功。",
+  "_云端同步": "cloud_url 填 GitHub 仓库 raw 地址后，每轮自动拉取云端 apis.json 覆盖本地；云端挂了自动用 apis.cache.json 缓存；留空则为纯本地模式。",
+  "cloud_url": "",
+  "_自动修复": "auto_heal=true 时，某 API 连续失败达阈值后，自动从订阅源拉最新地址、实测可用后替换，并 PushPlus 通知。source_subscribe_url 是上游维护的公开采集站列表。",
+  "auto_heal": false,
+  "source_subscribe_url": "https://gist.githubusercontent.com/GitHubLang/5f7978a2402f8ec95e10529f6c2ab9eb/raw/sources.json",
+  "pushplus_token": "9fba6d928deb4c898406dd6571b8c768",
+  "interval_minutes": 15,
+  "timeout_seconds": 10,
+  "fail_threshold": 2,
+  "_最近实测": "2026-11-27：百度 apibdzy.com、天涯 tyyszy.com 可用；其余 403/502 多为本机代理拦截，正常网络下可能可用",
+  "apis": [
+    {
+      "name": "百度资源(实测可用)",
+      "url": "https://api.apibdzy.com/api.php/provide/vod?ac=videolist&wd=test",
+      "expect_keyword": "",
+      "enabled": true
+    },
+    {
+      "name": "百度资源-列表(实测可用)",
+      "url": "https://api.apibdzy.com/api.php/provide/vod?ac=videolist",
+      "expect_keyword": "",
+      "enabled": true
+    },
+    {
+      "name": "天涯资源(实测可用)",
+      "url": "https://tyyszy.com/api.php/provide/vod?ac=videolist&wd=test",
+      "expect_keyword": "",
+      "enabled": true
+    },
+    {
+      "name": "非凡资源(待恢复)",
+      "url": "https://cj.lziapi.com/api.php/provide/vod?ac=videolist&wd=test",
+      "expect_keyword": "",
+      "enabled": true
+    },
+    {
+      "name": "光速资源(403待恢复)",
+      "url": "https://api.guangsuapi.com/api.php/provide/vod?ac=videolist&wd=test",
+      "expect_keyword": "",
+      "enabled": true
+    }
+  ]
+}
